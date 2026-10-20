@@ -1,0 +1,16 @@
+# Dependencies (re-created with npm install)
+node_modules/
+
+# Secrets - NEVER commit these
+.env
+
+# Build output
+dist/
+build/
+coverage/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
