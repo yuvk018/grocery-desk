@@ -1,9 +1,9 @@
 // Order.js - the shape of a confirmed customer order (collection: "orders").
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // The order's life cycle: New -> Packed -> Delivered, or Cancelled.
-const ORDER_STATUSES = ['New', 'Packed', 'Delivered', 'Cancelled'];
+export const ORDER_STATUSES = ['New', 'Packed', 'Delivered', 'Cancelled'];
 
 // One line on the bill, e.g. "2 kg Wheat Atta @ ₹48 = ₹96".
 // We COPY the name, unit and price here instead of only storing the product ID.
@@ -44,5 +44,4 @@ const orderSchema = new mongoose.Schema(
 
 const Order = mongoose.model('Order', orderSchema);
 
-module.exports = Order;
-module.exports.ORDER_STATUSES = ORDER_STATUSES;
+export default Order;

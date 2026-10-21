@@ -2,7 +2,7 @@
 // This powers the "LLM usage log" stretch goal: the shopkeeper can see how fast
 // the LLM is, how many tokens it uses and how often parsing fails.
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const llmLogSchema = new mongoose.Schema(
   {
@@ -16,4 +16,6 @@ const llmLogSchema = new mongoose.Schema(
   { timestamps: true } // createdAt = when the call happened
 );
 
-module.exports = mongoose.model('LlmLog', llmLogSchema);
+const LlmLog = mongoose.model('LlmLog', llmLogSchema);
+
+export default LlmLog;

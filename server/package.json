@@ -2,16 +2,20 @@
   "name": "grocery-order-desk-server",
   "version": "1.0.0",
   "description": "Backend API for the Sharma General Store AI order desk",
+  "type": "module",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "seed": "node src/seed/seed.js",
-    "test": "jest --runInBand"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand"
   },
   "jest": {
     "testEnvironment": "node",
-    "testTimeout": 30000
+    "testTimeout": 30000,
+    "setupFiles": [
+      "<rootDir>/tests/setupEnv.js"
+    ]
   },
   "license": "MIT",
   "dependencies": {
@@ -19,6 +23,8 @@
     "cors": "^2.8.6",
     "dotenv": "^18.0.8",
     "express": "^5.3.0",
+    "grocery-order-desk": "file:..",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.11.2",
     "zod": "^4.6.7"
   },

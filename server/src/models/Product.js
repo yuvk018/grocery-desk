@@ -1,10 +1,10 @@
 // Product.js - the shape of one product in the shop's catalog.
 // A "model" is what we use to read and write a MongoDB collection (here: "products").
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // The only units the assignment allows. Exported so other files (validation, unit conversion) reuse the same list.
-const UNITS = ['kg', 'litre', 'piece', 'packet', 'dozen'];
+export const UNITS = ['kg', 'litre', 'piece', 'packet', 'dozen'];
 
 const productSchema = new mongoose.Schema(
   {
@@ -42,5 +42,4 @@ const productSchema = new mongoose.Schema(
 
 const Product = mongoose.model('Product', productSchema);
 
-module.exports = Product;
-module.exports.UNITS = UNITS;
+export default Product;

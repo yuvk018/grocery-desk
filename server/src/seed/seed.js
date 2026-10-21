@@ -5,11 +5,11 @@
 // So you can run it any time to reset the catalog (prices and stock) to a clean state for testing.
 // Orders are left alone: each order item keeps its own copy of name and price.
 
-require('dotenv').config(); // load MONGODB_URI from server/.env
+import 'dotenv/config'; // load MONGODB_URI from server/.env (must be the first import)
 
-const { connectDB, disconnectDB } = require('../config/db');
-const Product = require('../models/Product');
-const catalog = require('./catalog');
+import { connectDB, disconnectDB } from '../config/db.js';
+import Product from '../models/Product.js';
+import catalog from './catalog.js';
 
 async function seed() {
   await connectDB(process.env.MONGODB_URI);
@@ -23,7 +23,7 @@ async function seed() {
 
 seed()
   .catch((err) => {
-    console.error('Seeding failed:', err.message);
+    console.error(`Seeding failed: ${err.message}`);
     process.exitCode = 1; // tell the terminal the script failed
   })
   .finally(disconnectDB); // always close the connection so the script can exit

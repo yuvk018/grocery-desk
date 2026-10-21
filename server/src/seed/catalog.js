@@ -28,4 +28,4 @@ const catalog = [
   { code: 'P20', name: 'Bath Soap', unit: 'piece', price: 38, stock: 30, aliases: ['soap', 'sabun'] },
 ];
 
-module.exports = catalog;
+export default catalog;
