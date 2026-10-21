@@ -1,0 +1,15 @@
+{
+  "name": "grocery-order-desk",
+  "version": "1.0.0",
+  "description": "AI-powered order desk for Sharma General Store (MERN + Gemini)",
+  "private": true,
+  "scripts": {
+    "setup": "npm install && npm install --prefix server && npm install --prefix client && node -e \"const fs=require('fs');if(!fs.existsSync('server/.env')){fs.copyFileSync('server/.env.example','server/.env');console.log('Created server/.env - fill in MONGODB_URI, GEMINI_API_KEY, SHOPKEEPER_PASSWORD and JWT_SECRET')}\"",
+    "seed": "npm run seed --prefix server",
+    "dev": "concurrently -n server,client -c cyan,magenta \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "test": "npm test --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}
