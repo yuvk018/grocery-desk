@@ -1,0 +1,58 @@
+/* index.css - loads Tailwind CSS and defines our design "tokens" (colours, fonts, shadows).
+   Defining them once here means every page uses the same palette:
+   e.g. bg-paper, text-ink, border-line, bg-brand, text-accent, shadow-card are all our own names. */
+@import "tailwindcss";
+
+@theme {
+  /* Font: DM Sans, a clean, friendly sans-serif, for headings and text alike.
+     It is loaded from Google Fonts in index.html. */
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Neutrals: warm paper background, charcoal ink */
+  --color-paper: #f4f1ea;
+  --color-surface: #ffffff;
+  --color-ink: #1a211d;
+  --color-muted: #6a716c;
+  --color-line: #e6e1d6;
+
+  /* Brand: deep forest green (the shop awning) */
+  --color-brand: #1d5240;
+  --color-brand-dark: #12382b;
+  --color-brand-soft: #e4eee8;
+
+  /* Accent: warm saffron/turmeric, used sparingly for highlights (totals, icons, badges) */
+  --color-accent: #d4952a;
+  --color-accent-soft: #faf0dc;
+
+  /* Status colours, used only when something needs attention */
+  --color-warn: #a35a00;
+  --color-warn-soft: #fbf0dc;
+  --color-danger: #b42318;
+  --color-danger-soft: #fbeae8;
+
+  /* Soft, layered shadows: a hairline plus a wide, faint glow */
+  --shadow-card: 0 1px 2px rgb(26 33 29 / 0.04), 0 8px 24px -12px rgb(26 33 29 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(26 33 29 / 0.05), 0 20px 40px -20px rgb(26 33 29 / 0.25);
+}
+
+/* Base styles for the whole page */
+@layer base {
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+    /* A faint warm glow at the top of every page */
+    background-image: radial-gradient(1200px 500px at 50% -200px, rgb(212 149 42 / 0.08), transparent 70%);
+    background-repeat: no-repeat;
+  }
+}
+
+@layer utilities {
+  /* Money and quantities line up nicely in columns */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  /* A subtle dot texture for dark brand panels */
+  .dot-texture {
+    background-image: radial-gradient(rgb(255 255 255 / 0.09) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+}
