@@ -2,8 +2,14 @@
 // It does NOT start listening on a port; server.js does that.
 // Keeping them separate lets our tests import the app without starting a real server.
 
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
+
+import productRoutes from './routes/productRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
+import authRoutes from './routes/authRoutes.js';
+import llmLogRoutes from './routes/llmLogRoutes.js';
+import { notFound, errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
 
@@ -16,6 +22,14 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
-// Routes for products, orders, etc. are added in later steps.
+// --- Our API routes ---
+app.use('/api/products', productRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/llm-logs', llmLogRoutes);
 
-module.exports = app;
+// --- Error handling (must come AFTER all routes) ---
+app.use(notFound); // any URL that didn't match a route above -> 404
+app.use(errorHandler); // any error thrown in a route/service ends up here
+
+export default app;
