@@ -6,13 +6,12 @@
 |---|---|
 | **Claude Code**  | Planning the 13 build steps, writing the code and tests step by step|
 | **Google Gemini** (`gemini-3.5-flash-lite`, free tier) | Inside the product: turns the customer's message into structured line items |
-| <!-- TODO: add any other tool you used, e.g. ChatGPT, Copilot --> | |
 
 ## Most important prompts
 
 These are the prompts I gave Claude Code, lightly cleaned up for spelling.
 
-1. *"efore writing code, analyse the assignment requirements and propose a backend architecture that is easy to maintain, test, and explain. Separate routes, controllers, services, models, middleware, and utilities according to their responsibilities."* 
+1. *"Before writing code, analyse the assignment requirements and propose a backend architecture that is easy to maintain, test, and explain. Separate routes, controllers, services, models, middleware, and utilities according to their responsibilities."* 
 2. *"Add comments and use Tailwind CSS for styling."*
 3. *"Review the complete order-creation workflow and identify potential inconsistencies between order placement, price calculation, and stock deduction"*
 4. *"Review the authentication and authorisation flow for shopkeeper operations. Verify JWT signatures and expiry, protect restricted routes with middleware, and ensure that customer-facing endpoints cannot perform shopkeeper-only actions."* 
