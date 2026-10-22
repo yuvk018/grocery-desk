@@ -1,5 +1,7 @@
 # Sharma General Store · AI Order Desk
 
+**Live demo:** https://grocery-desk.vercel.app
+
 A web app where customers type grocery orders the way they would text them, in English, Hindi (Roman script) or a mix, for example *"bhaiya 2 kilo atta, ek dozen ande aur 2 packet doodh bhej do"*. An LLM (Google Gemini) reads the message, our own code turns it into a priced order that the customer reviews and confirms, and the shopkeeper manages orders and the catalog from a dashboard.
 
 **The key design decision:** the LLM only *reads* the message and says which product, how much and in what unit. Matching to real products, unit conversion, prices and stock are all plain, tested code. The LLM never sets a price, checks stock or saves anything.
@@ -112,6 +114,7 @@ docs/     test message results
 - **Customers have no password.** "Your past orders" is looked up by name, so anyone typing the same name sees those orders. Acceptable for this assignment; real accounts would fix it.
 - **No database transaction for multi-item orders.** Stock is taken item by item and given back if any item fails. If the server crashed in the middle of a confirm, the stock already taken for that order would not be returned.
 - **Windows + some home routers:** Node can fail to look up Atlas's `mongodb+srv` address (`querySrv ECONNREFUSED`). Setting `DNS_SERVERS=8.8.8.8,1.1.1.1` in `server/.env` fixes it.
+- **The API runs on Render's free tier and sleeps after ~15 min idle;** the first request after that can take 30–60 s.
 
 
 No API keys were committed to this repository.
